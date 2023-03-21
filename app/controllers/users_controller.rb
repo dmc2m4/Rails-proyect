@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
+    before_action :set_user, only: [:show, :destroy]
+
     def index
         @users = User.all
         render json: @users, status: :ok
     end
 
     def show
-        @user = User.find(params[:id])
         render json: @user, status: :ok
     end
 
@@ -20,9 +21,12 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        @user = User.find(params[:id])
         @user.destroy
         head :no_content
+    end
+
+    def set_user
+        @user = User.find(params[:id])
     end
 
     private
