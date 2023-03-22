@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
 
     def authenticate_request
         header = request.headers['Authorization']
-        header = request.split(" ").last if header
-        decoded = jwt_decoded(header)
+        header = header.split(" ").last if header
+        decoded = jwt_decode(header)
         @current_user = User.find(decoded[:user_id])
     end
 
