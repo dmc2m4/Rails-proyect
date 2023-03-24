@@ -1,5 +1,9 @@
 <h1>Login</h1>
-
 <%= render 'authentication/form' %>
-
-<% @users.each do |user|%>
+<ul>
+  <% @users.each do |user|%>
+    <li>
+    <%= user.email %>
+    </li>
+  <% end %>
+</ul>
