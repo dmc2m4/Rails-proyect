@@ -19,10 +19,11 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        puts @user
         if @user.save 
-            render json: @user, status: :ok
+            redirect_to root_path
         else
-            render json: @user.errors, status: :unprocessable_entity
+            render :new, status: :unprocessable_entity
         end
     end
 
