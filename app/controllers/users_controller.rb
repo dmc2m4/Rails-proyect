@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
     def index
         @users = User.all
-        # render json: @users, status: :ok
     end
 
     def show
@@ -30,6 +29,7 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy
         head :no_content
+        redirect_to root_path, status: :see_other
     end
 
     def edit

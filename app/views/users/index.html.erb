@@ -3,7 +3,16 @@
 <ul>
   <% @users.each do |user|%>
     <li>
-    <%= user.email %>
+      <%= user.email %>
+    </li>
+    <li>
+      <%= link_to "Edit", edit_user_path(:user_id) %>
+    </li>
+    <li>
+      <%= link_to "Delete", user_path(:user_id), data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure"}
+    %>
     </li>
   <% end %>
 </ul>
